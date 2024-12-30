@@ -11,20 +11,26 @@ import { User } from "./User";
 @Entity()
 export class Post {
   @PrimaryGeneratedColumn()
-  id: number;
+  blogid: number = 1;
 
   @Column()
-  title: string;
+  title: string = "";
 
   @Column("text")
-  content: string;
+  content: string = "";
 
-  @ManyToOne(() => User, (user) => user.posts)
-  author: User;
+  @ManyToOne(() => User, (userid) => userid.posts)
+  userid?: User;
+
+  @Column()
+  category: string = "";
+
+  @Column()
+  tags: string = "";
 
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt: Date = new Date();
 
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt: Date = new Date();
 }

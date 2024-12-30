@@ -9,11 +9,11 @@ export class PostRepository {
   }
 
   async findAll(): Promise<Post[]> {
-    return this.repo.find({ relations: ["author"] });
+    return await this.repo.find({ relations: ["userid"] });
   }
 
-  async findById(id: number): Promise<Post | undefined> {
-    return this.repo.findOne(id, { relations: ["author"] });
+  async findById(id: number): Promise<Post[] | undefined> {
+    return await this.repo.find({ relations: ["userid"] });
   }
 
   async createPost(post: Partial<Post>): Promise<Post> {
@@ -21,7 +21,7 @@ export class PostRepository {
     return this.repo.save(newPost);
   }
 
-  async updatePost(id: number, post: Partial<Post>): Promise<Post | undefined> {
+  async updatePost(id: number, post: Partial<Post>): Promise<Post[] | undefined> {
     await this.repo.update(id, post);
     return this.findById(id);
   }
@@ -30,5 +30,4 @@ export class PostRepository {
     await this.repo.delete(id);
   }
 
-  // Additional post-related data access methods
 }

@@ -4,17 +4,17 @@ import { Post } from "./Post";
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
+  blogid: number = 1;
 
   @Column({ unique: true })
-  googleId: string;
+  email: string = '';
 
   @Column()
-  email: string;
+  userid: string = '';
 
   @Column()
-  name: string;
+  name: string = '';
 
-  @OneToMany(() => Post, (post) => post.author)
-  posts: Post[];
+  @OneToMany(() => Post, (post) => post.userid)
+  posts?: Post[];
 }

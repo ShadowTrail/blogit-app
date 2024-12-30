@@ -8,9 +8,10 @@ export class UserRepository {
     this.repo = getRepository(User);
   }
 
-  async findByGoogleId(googleId: string): Promise<User | undefined> {
-    return this.repo.findOne({ googleId });
-  }
+  async findByUserId(userid: string): Promise<User | undefined> {
+    const user = await this.repo.findOne({ where: { userid } });
+    return user;
+   }
 
   async createUser(user: Partial<User>): Promise<User> {
     const newUser = this.repo.create(user);
