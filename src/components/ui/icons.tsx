@@ -1,4 +1,4 @@
-import { Rss, type Icon as LucidIcon, NotebookPen, ArrowRight, Twitter, Instagram, Facebook, Github } from "lucide-react";
+import { Rss, type Icon as LucidIcon, NotebookPen, ArrowRight, Twitter, Instagram, Facebook, Github, Pen, UserRound } from "lucide-react";
 
 export type Icon = typeof LucidIcon;
 export const Icons = {
@@ -8,5 +8,7 @@ export const Icons = {
     twitter: Twitter,
     instagram: Instagram,
     facebook: Facebook,
-    github: Github
+    github: Github,
+    pen: Pen,
+    user: UserRound,
 }

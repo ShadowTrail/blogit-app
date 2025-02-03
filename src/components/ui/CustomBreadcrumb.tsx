@@ -9,7 +9,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-export function BreadcrumbWithCustomSeparator({category, slug}: {category: string, slug: string}) {
+export function BreadcrumbWithCustomSeparator({category, id}: {category: string, id: number}) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -20,13 +20,13 @@ export function BreadcrumbWithCustomSeparator({category, slug}: {category: strin
           <Slash />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbLink href={`/blog/${category}`}>{category}</BreadcrumbLink>
+          <BreadcrumbLink href={`/posts/${encodeURIComponent(category)}`}>{category}</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
           <Slash />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbPage>{slug}</BreadcrumbPage>
+          <BreadcrumbPage>{id}</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

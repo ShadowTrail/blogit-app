@@ -1,8 +1,12 @@
+// frontend/src/app/layout.tsx
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import Footer from "@/components/ui/footer";
+import { AuthProvider } from "@/context/AuthContext";
+import { MainNav } from "@/components/ui/main-nav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,20 +29,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider
+    <AuthProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-        <main className="flex-1">{children}</main>
-        <Footer/>
-        </ThemeProvider>
-      </body>
-    </html>
+            <div className="px-12">
+              <MainNav />
+            </div>
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </ThemeProvider>
+        </body>
+      </html>
+    </AuthProvider>
   );
 }
