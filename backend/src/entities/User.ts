@@ -1,20 +1,35 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+// src/entities/User.ts
+
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from "typeorm";
 import { Post } from "./Post";
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  blogid: number = 1;
+  public id!: number;
 
   @Column({ unique: true })
-  email: string = '';
+  public googleId!: string;
+
+  @Column({ unique: true })
+  public email!: string;
 
   @Column()
-  userid: string = '';
+  public name!: string;
 
-  @Column()
-  name: string = '';
+  @OneToMany(() => Post, (post) => post.author, { cascade: true })
+  public posts!: Post[];
 
-  @OneToMany(() => Post, (post) => post.userid)
-  posts?: Post[];
+  @CreateDateColumn({ type: "timestamp" })
+  public createdAt!: Date;
+
+  @UpdateDateColumn({ type: "timestamp" })
+  public updatedAt!: Date;
 }

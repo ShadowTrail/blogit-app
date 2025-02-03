@@ -1,3 +1,5 @@
+// src/entities/Post.ts
+
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -7,30 +9,41 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { User } from "./User";
+import { Category } from "./Category";
 
 @Entity()
 export class Post {
   @PrimaryGeneratedColumn()
-  blogid: number = 1;
+  public id!: number;
 
-  @Column()
-  title: string = "";
+  @Column({ length: 255 })
+  public title!: string;
 
   @Column("text")
-  content: string = "";
+  public content!: string;
 
-  @ManyToOne(() => User, (userid) => userid.posts)
-  userid?: User;
+  @ManyToOne(() => User, (user) => user.posts, {
+    eager: true,
+    onDelete: "CASCADE",
+  })
+  public author!: User;
 
-  @Column()
-  category: string = "";
+  @ManyToOne(() => Category, (category) => category.posts, {
+    nullable: true,
+    onDelete: "SET NULL",
+    eager: true,
+  })
+  public category!: Category | null;
 
-  @Column()
-  tags: string = "";
+  @Column({ nullable: true })
+  imageUrl!: string;
 
-  @CreateDateColumn()
-  createdAt: Date = new Date();
+  @Column({ default: 0 })
+  public viewCount!: number;
 
-  @UpdateDateColumn()
-  updatedAt: Date = new Date();
+  @CreateDateColumn({ type: "timestamp" })
+  public createdAt!: Date;
+
+  @UpdateDateColumn({ type: "timestamp" })
+  public updatedAt!: Date;
 }

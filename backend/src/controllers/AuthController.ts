@@ -1,4 +1,6 @@
-import { Request, Response } from "express";
+// backend/src/controllers/AuthController.ts
+
+import { Request, Response, NextFunction } from "express";
 import passport from "passport";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -6,26 +8,38 @@ import { UserService } from "../services/UserService";
 
 dotenv.config();
 
-const userService = new UserService();
-
 export class AuthController {
-  static googleAuth(req: Request, res: Response, next: Function) {
-    passport.authenticate("google", { scope: ["profile", "email"] })(
-      req,
-      res,
-      next
-    );
-  }
+  static async googleCallback(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    passport.authenticate(
+      "google",
+      { session: false },
+      async (err, user, info) => {
+        if (err || !user) {
+          res.redirect(
+            `${process.env.FRONTEND_URL}/login?error=Authentication failed`
+          );
+          return;
+        }
 
-  static async googleCallback(req: Request, res: Response) {
-    passport.authenticate("google", async (err: any, user: any) => {
-      if (err || !user) {
-        return res.status(400).json({ message: "Authentication failed" });
+        try {
+          const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
+            expiresIn: "1h",
+          });
+          // Redirect to frontend with token as query parameter
+          res.redirect(
+            `${process.env.FRONTEND_URL}/auth/callback?token=${token}`
+          );
+        } catch (error) {
+          console.error("Error generating JWT:", error);
+          res.redirect(
+            `${process.env.FRONTEND_URL}/login?error=Token generation failed`
+          );
+        }
       }
-      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
-        expiresIn: "1h",
-      });
-      res.json({ token });
-    })(req, res);
+    )(req, res, next);
   }
 }
