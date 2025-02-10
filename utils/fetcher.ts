@@ -2,9 +2,9 @@
 
 const fetcher = async (url: string) => {
   const fullUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}${url}`;
-  console.log(`Fetching URL: ${fullUrl}`);
+  //console.log(`Fetching URL: ${fullUrl}`);
 
-  const token = localStorage.getItem("token"); // Or retrieve from context/state
+  const token = localStorage.getItem("token");
 
   const res = await fetch(fullUrl, {
     headers: {
@@ -25,7 +25,7 @@ const fetcher = async (url: string) => {
   }
 
   const data = await res.json();
-  console.log("Fetched Data:", data);
+  //console.log("Fetched Data:", data);
   return data;
 };
 

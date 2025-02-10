@@ -43,17 +43,17 @@ export default function PopularPosts() {
           key={post.id}
           className="flex items-center gap-2 group cursor-pointer py-2"
         >
-          <Icons.arrowRight className="h-6 w-6 group-hover:translate-x-1 transition-all" />
+          <Icons.arrowRight className="h-6 w-6 shrink-0 group-hover:translate-x-1 transition-all" />
           <Link
             href={`/posts/${encodeURIComponent(
               post.category.name
             )}/${encodeURIComponent(post.id)}`}
           >
-            <span className="text-xl text-blue-600 hover:underline">
+            <span className="text-xl text-blue-600 hover:underline truncate">
               {post.title}
             </span>
           </Link>
-          <p className="text-gray-600 text-sm">
+          <p className="text-gray-600 text-sm truncate">
             By {post.author?.name || "Unknown Author"} on{" "}
             {new Date(post.createdAt).toLocaleDateString()}
           </p>

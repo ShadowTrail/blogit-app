@@ -121,7 +121,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-500 dark:text-gray-400 dark:border-gray-200">
-          &copy; 202 Blogger's Stop. All rights reserved.
+          &copy; 2025 Blogger's Stop. All rights reserved.
         </div>
       </div>
     </footer>

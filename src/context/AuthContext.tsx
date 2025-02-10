@@ -66,11 +66,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       );
 
       if (!res.ok) {
-        throw new Error("Failed to fetch user profile");
+        throw new Error("User not logged in.");
       }
 
       const data = await res.json();
-      console.log("Fetched user data:", data);
+      //console.log("Fetched user data:", data);
       setUser(data);
     } catch (error) {
       console.error("Error fetching user profile:", error);

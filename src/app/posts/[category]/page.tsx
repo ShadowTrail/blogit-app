@@ -7,7 +7,6 @@ import { formatDate } from "./utils";
 import { Category } from "@/types/Category";
 import { Post } from "@/types/Post";
 
-// Define PageProps interface
 interface PageProps {
   params: { category: string };
 }
@@ -34,15 +33,12 @@ async function CategoryPage({ params }: PageProps) {
       } else {
         throw new Error(
           `Failed to fetch posts for ${category}. Status: ${res.status}`
-        ); // More informative error
+        );
       }
     }
 
     const posts: Post[] = await res.json();
 
-    if (!posts || posts.length === 0) {
-      notFound();
-    }
 
     // **Type Narrowing: Exclude posts with null categories and matching category name**
     const filteredPosts: Post[] = posts.filter(
@@ -89,7 +85,7 @@ async function CategoryPage({ params }: PageProps) {
     );
   } catch (error) {
     console.error("Error in CategoryPage:", error);
-    return <div>Error loading posts. Please try again later.</div>;
+    return <div className="p-12 text-xl">No posts in the {category} category.</div>;
   }
 }
 

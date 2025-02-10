@@ -16,24 +16,14 @@ export default function CardCategory({title, summary, date, imageUrl} : CardCate
           <CardTitle className="truncate">{title}</CardTitle>
         </CardHeader>
         <CardContent>
-          {imageUrl ? (
-            <Image
-              src={imageUrl}
-              alt={title}
-              width={350}
-              height={200}
-              className="object-cover rounded"
-              priority
-            />
-          ) : (
-            <Image
-              src="/default-image.png" // Ensure this default image exists in public/
-              alt="Default Image"
-              width={350}
-              height={200}
-              className="object-cover rounded"
-            />
-          )}
+          <Image
+            src={imageUrl || "/default-image.jpg"}
+            alt={title}
+            width={350}
+            height={200}
+            className="object-cover rounded"
+            priority
+          />
           <p>{summary}</p>
         </CardContent>
         <CardFooter>

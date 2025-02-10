@@ -94,7 +94,7 @@ export default function CreatePostForm() {
       });
 
       if (post) {
-        console.log("Post created:", post);
+        //console.log("Post created:", post);
         setPostCreated(true); // Flag successful post creation
         setTitle(""); // Clear form fields after success
         setContent("");

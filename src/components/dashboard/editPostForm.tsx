@@ -17,6 +17,9 @@ interface EditPostFormProps {
 export default function EditPostForm({ postId }: EditPostFormProps) {
   const router = useRouter();
   const { user } = useContext(AuthContext);
+  if (!user) {
+    return <div>Please log in to edit.</div>;
+  }
 
   // Local state for post fields and original values
   const [post, setPost] = useState<Post | null>(null);
@@ -27,6 +30,7 @@ export default function EditPostForm({ postId }: EditPostFormProps) {
   const [newImageFile, setNewImageFile] = useState<File | null>(null);
   const [newImagePreview, setNewImagePreview] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+
 
   // Fetch the existing post data on mount
   useEffect(() => {

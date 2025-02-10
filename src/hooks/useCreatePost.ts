@@ -14,12 +14,12 @@ const createPostFetcher = async (
   url: string,
   { arg }: { arg: CreatePostInput }
 ) => {
-  const token = localStorage.getItem("token"); // Or retrieve from context/state
+  const token = localStorage.getItem("token");
 
   const formData = new FormData();
   formData.append("title", arg.title);
   formData.append("content", arg.content);
-  formData.append("categoryName", arg.categoryName); // Ensure backend expects 'categoryName'
+  formData.append("categoryName", arg.categoryName);
 
   if (arg.imageUrl) {
     formData.append("image", arg.imageUrl); // ensure 'image' matches backend's multer field

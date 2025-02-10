@@ -9,6 +9,7 @@ import { Post } from "@/types/Post";
 import { formatDate } from "@/app/posts/[category]/utils";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const DashboardPage: React.FC = () => {
   const { user } = useContext(AuthContext);
@@ -58,12 +59,24 @@ const DashboardPage: React.FC = () => {
             key={post.id}
             className="p-4 border rounded flex flex-col md:flex-row items-start justify-between"
           >
-            <div>
-              <h2 className="text-xl font-semibold">{post.title}</h2>
-              <p className="text-sm text-gray-500">
-                Created on {formatDate(post.createdAt)}
-              </p>
-              <p>{post.summary}</p>
+            <div className="flex gap-5">
+              <div>
+                <Image
+                  src={post.imageUrl || "/default-image.jpg"}
+                  alt={post.title || "No-image"}
+                  width={100}
+                  height={100}
+                  className="object-cover rounded"
+                  priority
+                />
+              </div>
+              <div>
+                <h2 className="text-xl font-semibold">{post.title}</h2>
+                <p className="text-sm text-gray-500">
+                  Created on {formatDate(post.createdAt)}
+                </p>
+                <p>{post.summary}</p>
+              </div>
             </div>
             <div className="flex gap-4 mt-4 md:mt-0">
               <Link href={`/dashboard/edit/${post.id}`}>
