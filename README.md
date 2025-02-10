@@ -42,7 +42,7 @@ To get the prerequisites and get started with Blogger's Stop, clone the reposito
 4. **Viewing Dependecies(if curious):**
    - Navigate to package.json or package-lock.json and refer to the dependencies section.
   
-5. Ensure that you create .env and .env.local files with necessary data to ensure code works smoothly.
+5. **Ensure that you create .env and .env.local files with necessary data to ensure code works smoothly:**
    - In backend, .env should include:
    ```.env
    PORT
