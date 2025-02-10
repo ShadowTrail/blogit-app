@@ -2,14 +2,23 @@
 
 Blogger's Stop is a TypeScript-based application aimed at providing a seamless blogging experience. The repository consists of both the frontend and backend of the application.
 
-## Tecnologies used
+## Table of Contents
+
+- [Technologies used](#technologies-used)
+- [Installation and Prerequisites](#installation-and-prerequisites)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Technologies used
 
 1. **Frontend framework:** NextJS
 2. **Backend:** Typescript
 3. **Database:** MySQL
 
-## Prerequisites
-To get the prerequisites for the repository [bloggersstop-app](https://github.com/ShadowTrail/bloggersstop-app), you can follow these steps:
+## Installation and Prerequisites
+
+To get the prerequisites and get started with Blogger's Stop, clone the repository and install the necessary dependencies:
 
 1. **Node.js Installation:**
    - Ensure that your computer or codespace uses Node.js version 12 or greater. You can download Node.js from the official [Node.js](https://nodejs.org) website.
@@ -30,24 +39,11 @@ To get the prerequisites for the repository [bloggersstop-app](https://github.co
      npm install
      ```
 
+4. **Viewing Dependecies(if curious):**
+   - Navigate to package.json or package-lock.json and refer to the dependencies section.
+
 For more detailed information, you can refer to the [Quickstart for building GitHub Apps](https://docs.github.com/en/apps/creating-github-apps/writing-code-for-a-github-app/quickstart).
 
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Installation
-
-To get started with Blogger's Stop, clone the repository and install the necessary dependencies:
-
-```bash
-git clone https://github.com/ShadowTrail/bloggersstop-app.git
-cd bloggersstop-app
-npm install
-```
 
 ## Usage
 To start the application, use the following command:
