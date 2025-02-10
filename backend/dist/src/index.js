@@ -43,7 +43,7 @@ const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield (0, database_1.connectDB)();
         app.listen(PORT, () => {
-            console.log(`Server running on port ${PORT}`);
+            //console.log(`Server running on port ${PORT}`);
         });
     }
     catch (err) {

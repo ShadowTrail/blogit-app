@@ -4,7 +4,6 @@ import { Request, Response, NextFunction } from "express";
 import passport from "passport";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { UserService } from "../services/UserService";
 
 dotenv.config();
 

@@ -20,7 +20,6 @@ export class CategoryController {
 
   // POST /categories - Protected: Create a new category
   static async createCategory(req: Request, res: Response): Promise<void> {
-    // Assert that req.user exists. You can also add a runtime check if needed.
     const user = req.user as User;
     if (!user) {
       res.status(401).json({ message: "Unauthorized" });

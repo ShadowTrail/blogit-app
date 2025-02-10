@@ -1,5 +1,7 @@
 // backend/src/middlewares/UploadMiddleware.ts
 
+/** *@desc This script is for saving uploaded post photos */
+
 import multer from "multer";
 import path from "path";
 import { Request } from "express";
