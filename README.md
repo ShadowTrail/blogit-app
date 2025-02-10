@@ -41,6 +41,29 @@ To get the prerequisites and get started with Blogger's Stop, clone the reposito
 
 4. **Viewing Dependecies(if curious):**
    - Navigate to package.json or package-lock.json and refer to the dependencies section.
+  
+5. Ensure that you create .env and .env.local files with necessary data to ensure code works smoothly.
+   - In backend, .env should include:
+   ```.env
+   PORT
+   DB_HOST
+   DB_PORT
+   DB_USERNAME
+   DB_PASSWORD
+   DB_DATABASE
+   JWT_SECRET
+   GOOGLE_CLIENT_ID
+   GOOGLE_CLIENT_SECRET
+   GOOGLE_CALLBACK_URL
+   API_BASE_URL
+   FRONTEND_URL
+   ```
+   - In frontend, .env.local should include
+   ```
+   NEXT_PUBLIC_API_BASE_URL
+   NEXT_PUBLIC_EMAILJS_SERVICE_ID
+   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+   NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
 
 For more detailed information, you can refer to the [Quickstart for building GitHub Apps](https://docs.github.com/en/apps/creating-github-apps/writing-code-for-a-github-app/quickstart).
 
